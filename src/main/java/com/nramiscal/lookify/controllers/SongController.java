@@ -1,9 +1,7 @@
 package com.nramiscal.lookify.controllers;
 
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.nramiscal.lookify.models.Song;
 import com.nramiscal.lookify.services.SongService;
 
@@ -30,7 +27,7 @@ public class SongController {
 	}
 		
 	@RequestMapping("/dashboard")
-    public String dashboard(Model model, @ModelAttribute("search") String search) {
+    public String dashboard(Model model) {
         List<Song> songs = songService.allSongs();
         model.addAttribute("songs", songs);
         return "dashboard";
@@ -44,7 +41,6 @@ public class SongController {
 		return "searchResult";
 	}
 
-	
 	@RequestMapping("/new")
 	public String add(@ModelAttribute("song") Song song) {
 		return "new";
@@ -82,6 +78,5 @@ public class SongController {
 		model.addAttribute("songs", songs);
 		return "topten";
 	}
-
 
 }
